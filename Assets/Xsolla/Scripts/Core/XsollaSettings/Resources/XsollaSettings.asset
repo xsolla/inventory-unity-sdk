@@ -24,10 +24,8 @@ MonoBehaviour:
   useConsoleAuth: 0
   platform: 1
   usernameFromConsole: testPSMax3
-  storeProjectId: 77640
+  projectId: 77640
   isSandbox: 1
-  paystationTheme: 1
-  payStationTokenRequestUrl: https://livedemo.xsolla.com/sdk/token/paystation_demo/
   inAppBrowserEnabled: 1
   facebookAppId: 
   googleServerId: 
