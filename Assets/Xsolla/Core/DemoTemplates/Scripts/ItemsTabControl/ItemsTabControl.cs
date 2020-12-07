@@ -38,7 +38,7 @@ public partial class ItemsTabControl : MonoBehaviour
 	private void InternalActivateInventoryTab()
 	{
 		storeButton.Deselect();
-		_itemsController.ActivateContainer(StoreConstants.INVENTORY_CONTAINER_NAME);
+		_itemsController.ActivateContainer(InventoryConstants.INVENTORY_CONTAINER_NAME);
 	}
 
 	public void ActivateStoreTab()

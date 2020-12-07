@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-using Xsolla.Store;
+using Xsolla.Inventory;
 
 namespace Xsolla.Core.Popup
 {

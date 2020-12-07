@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Xsolla.Core;
 
-namespace Xsolla.Store
+namespace Xsolla.Inventory
 {
 	public class UserSubscriptions : MonoSingleton<UserSubscriptions>
 	{
@@ -23,7 +23,7 @@ namespace Xsolla.Store
 
 		public void UpdateSupscriptions(Action<List<SubscriptionItem>> onSuccess = null, Action<Error> onError = null)
 		{
-			XsollaStore.Instance.GetSubscriptions(XsollaSettings.StoreProjectId, items =>
+			XsollaInventory.Instance.GetSubscriptions(XsollaSettings.ProjectId, items =>
 				{
 					_items = items.items.ToList();
 					onSuccess?.Invoke(GetItems());

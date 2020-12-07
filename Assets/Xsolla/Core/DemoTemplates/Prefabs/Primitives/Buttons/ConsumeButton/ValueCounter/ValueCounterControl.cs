@@ -7,7 +7,7 @@ public class ValueCounterControl : MonoBehaviour
 	public SimpleTextButton increaseButton;
 	public SimpleTextButton decreaseButton;
 	public Text counterValueText;
-	public float timeout = StoreConstants.DEFAULT_BUTTON_RATE_LIMIT_MS;
+	public float timeout = InventoryConstants.DEFAULT_BUTTON_RATE_LIMIT_MS;
 
 	private ValueCounter counter;
 

@@ -1,7 +1,5 @@
 using UnityEditor;
 using UnityEngine;
-using Xsolla.PayStation;
-using Xsolla.Store;
 
 namespace Xsolla.Core
 {

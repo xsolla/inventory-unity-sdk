@@ -4,7 +4,7 @@ using System.Globalization;
 using UnityEngine;
 using UnityEngine.UI;
 using Xsolla.Core;
-using Xsolla.Store;
+using Xsolla.Inventory;
 
 public class SubscriptionItemUI : MonoBehaviour
 {

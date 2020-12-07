@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using Xsolla.Core;
 using Xsolla.Login;
-using Xsolla.Store;
+using Xsolla.Inventory;
 
 public partial class DemoImplementation : MonoBehaviour, IDemoImplementation
 {
@@ -12,7 +12,7 @@ public partial class DemoImplementation : MonoBehaviour, IDemoImplementation
 		{
 			if (newState == MenuState.Main)
 			{
-				XsollaLogin.Instance.Token = XsollaStore.Instance.Token = GetUserToken();
+				XsollaLogin.Instance.Token = XsollaInventory.Instance.Token = GetUserToken();
 			}
 		};
 		ValidateXsollaSettings();
@@ -27,7 +27,7 @@ public partial class DemoImplementation : MonoBehaviour, IDemoImplementation
 			return;
 		}
 
-		if (string.IsNullOrEmpty(XsollaSettings.StoreProjectId))
+		if (string.IsNullOrEmpty(XsollaSettings.ProjectId))
 		{
 			var errorMessage = "Please copy the Store project ID from your Publisher Account and add it to your project settings";
 			GenerateLoginSettingsError(errorMessage);
@@ -35,16 +35,16 @@ public partial class DemoImplementation : MonoBehaviour, IDemoImplementation
 		}
 
 		var isDefaultLoginID = XsollaSettings.LoginId == Constants.DEFAULT_LOGIN_ID || XsollaSettings.LoginId == Constants.DEFAULT_PLATFORM_LOGIN_ID;
-		var isDefaultProjectID = XsollaSettings.StoreProjectId == Constants.DEFAULT_PROJECT_ID;
+		var isDefaultProjectID = XsollaSettings.ProjectId == Constants.DEFAULT_PROJECT_ID;
 
 		if (isDefaultLoginID && !isDefaultProjectID)
 		{
-			var errorMessage = $"You changed [XsollaSettings->ProjectID] to '{XsollaSettings.StoreProjectId}', but did not change LoginID. Change LoginID from '{XsollaSettings.LoginId}' to correct value.";
+			var errorMessage = $"You changed [XsollaSettings->ProjectID] to '{XsollaSettings.ProjectId}', but did not change LoginID. Change LoginID from '{XsollaSettings.LoginId}' to correct value.";
 			GenerateLoginSettingsError(errorMessage);
 		}
 		else if (!isDefaultLoginID && isDefaultProjectID)
 		{
-			var errorMessage = $"You changed [XsollaSettings->LoginID] to '{XsollaSettings.LoginId}', but did not change ProjectID. Change ProjectID from '{XsollaSettings.StoreProjectId}' to correct value.";
+			var errorMessage = $"You changed [XsollaSettings->LoginID] to '{XsollaSettings.LoginId}', but did not change ProjectID. Change ProjectID from '{XsollaSettings.ProjectId}' to correct value.";
 			GenerateLoginSettingsError(errorMessage);
 		}
 	}

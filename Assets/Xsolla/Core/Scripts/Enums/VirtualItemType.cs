@@ -1,4 +1,4 @@
-﻿namespace Xsolla.Store
+﻿namespace Xsolla.Inventory
 {
 	public enum VirtualItemType
 	{

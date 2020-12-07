@@ -5,13 +5,15 @@ using System.Linq;
 using UnityEngine;
 using Xsolla.Core;
 using Xsolla.Core.Popup;
-using Xsolla.Store;
+using Xsolla.Inventory;
 
 public partial class DemoImplementation : MonoBehaviour, IDemoImplementation
 {
+	private readonly Dictionary<string, List<string>> _itemsGroups = new Dictionary<string, List<string>>();
+
 	public void GetInventoryItems(Action<List<InventoryItemModel>> onSuccess, Action<Error> onError = null)
 	{
-		XsollaStore.Instance.GetInventoryItems(XsollaSettings.StoreProjectId, items =>
+		XsollaInventory.Instance.GetInventoryItems(XsollaSettings.ProjectId, items =>
 		{
 			var inventoryItems = items.items.Where(i => !i.IsVirtualCurrency() && !i.IsSubscription()).ToList();
 			inventoryItems.ToList().ForEach(i => AddItemGroups(i));
@@ -45,9 +47,28 @@ public partial class DemoImplementation : MonoBehaviour, IDemoImplementation
 			_itemsGroups[item.sku].AddRange(groups);
 	}
 
+	public void GetVirtualCurrencies(Action<List<VirtualCurrencyModel>> onSuccess, Action<Error> onError = null)
+	{
+		XsollaInventory.Instance.GetVirtualCurrencyList(XsollaSettings.ProjectId, items =>
+		{
+			var currencies = items.items.ToList();
+			if (currencies.Any())
+			{
+				var result = currencies.Select(c =>
+				{
+					var model = new VirtualCurrencyModel();
+					FillItemModel(model, c);
+					return model;
+				}).ToList();
+				onSuccess?.Invoke(result);
+			}
+			else onSuccess?.Invoke(new List<VirtualCurrencyModel>());
+		}, WrapErrorCallback(onError));
+	}
+
 	public void GetVirtualCurrencyBalance(Action<List<VirtualCurrencyBalanceModel>> onSuccess, Action<Error> onError = null)
 	{
-		XsollaStore.Instance.GetVirtualCurrencyBalance(XsollaSettings.StoreProjectId, balances =>
+		XsollaInventory.Instance.GetVirtualCurrencyBalance(XsollaSettings.ProjectId, balances =>
 		{
 			var result = balances.items.ToList().Select(b => new VirtualCurrencyBalanceModel
 			{
@@ -64,7 +85,7 @@ public partial class DemoImplementation : MonoBehaviour, IDemoImplementation
 
 	public void GetUserSubscriptions(Action<List<UserSubscriptionModel>> onSuccess, Action<Error> onError = null)
 	{
-		XsollaStore.Instance.GetSubscriptions(XsollaSettings.StoreProjectId, items =>
+		XsollaInventory.Instance.GetSubscriptions(XsollaSettings.ProjectId, items =>
 		{
 			var subscriptionItems = items.items.Select(i => new UserSubscriptionModel
 			{
@@ -169,7 +190,7 @@ public partial class DemoImplementation : MonoBehaviour, IDemoImplementation
 
 	private void SendConsumeItemRequest(InventoryItemModel item, int? count, Action onSuccess, Action<Error> onError)
 	{
-		XsollaStore.Instance.ConsumeInventoryItem(XsollaSettings.StoreProjectId, new ConsumeItem
+		XsollaInventory.Instance.ConsumeInventoryItem(XsollaSettings.ProjectId, new ConsumeItem
 		{
 			sku = item.Sku,
 			instance_id = item.InstanceId,
@@ -179,7 +200,7 @@ public partial class DemoImplementation : MonoBehaviour, IDemoImplementation
 
 	private void SendRedeemCouponCodeRequest(string couponCode, Action<List<CouponRedeemedItemModel>> onSuccess, Action<Error> onError)
 	{
-		XsollaStore.Instance.RedeemCouponCode(XsollaSettings.StoreProjectId, new CouponCode {coupon_code = couponCode}, redeemedItems =>
+		XsollaInventory.Instance.RedeemCouponCode(XsollaSettings.ProjectId, new CouponCode {coupon_code = couponCode}, redeemedItems =>
 		{
 			var redeemedItemModels = redeemedItems.items.Select(
 				i => new CouponRedeemedItemModel

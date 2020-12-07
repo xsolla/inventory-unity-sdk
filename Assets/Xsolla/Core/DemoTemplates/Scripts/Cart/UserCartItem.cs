@@ -27,7 +27,7 @@ public class UserCartItem
 		{
 			float totalDiscount = 0.0f;
 			
-			if (XsollaSettings.StoreProjectId == "44056")
+			if (XsollaSettings.ProjectId == "44056")
 			{
 				//Cutom discount based on item quantity to match backend rules for this project
 				if (IsInRange(Quantity, 2, 4))

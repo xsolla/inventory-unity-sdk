@@ -2,7 +2,7 @@
 using UnityEngine;
 using Xsolla.Core;
 using Xsolla.Core.Popup;
-using Xsolla.Store;
+using Xsolla.Inventory;
 
 public class AccountLinkingManager : MonoBehaviour
 {

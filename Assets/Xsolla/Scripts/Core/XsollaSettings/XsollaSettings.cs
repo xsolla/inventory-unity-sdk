@@ -1,8 +1,7 @@
 using System.IO;
 using UnityEditor;
 using UnityEngine;
-using Xsolla.PayStation;
-using Xsolla.Store;
+using Xsolla.Inventory;
 
 namespace Xsolla.Core
 {
@@ -28,12 +27,9 @@ namespace Xsolla.Core
 		[SerializeField] private PlatformType platform = PlatformType.Xsolla;
 		[SerializeField] private string usernameFromConsole;
 		
-		[SerializeField] private string storeProjectId = Constants.DEFAULT_PROJECT_ID;
+		[SerializeField] private string projectId = Constants.DEFAULT_PROJECT_ID;
 		[SerializeField] private bool isSandbox = true;
-
-		[SerializeField]
-		public PaystationTheme paystationTheme = PaystationTheme.Dark;
-		[SerializeField] private string payStationTokenRequestUrl = "https://livedemo.xsolla.com/sdk/token/paystation_demo/";
+		
 		[SerializeField] private bool inAppBrowserEnabled = true;
 
 		[SerializeField] private string facebookAppId;
@@ -146,12 +142,12 @@ namespace Xsolla.Core
 			}
 		}
 		
-		public static string StoreProjectId
+		public static string ProjectId
 		{
-			get => Instance.storeProjectId;
+			get => Instance.projectId;
 			set
 			{
-				Instance.storeProjectId = value;
+				Instance.projectId = value;
 				MarkAssetDirty();
 			}
 		}
@@ -170,24 +166,6 @@ namespace Xsolla.Core
 			get => Instance.platform;
 			set {
 				Instance.platform = value;
-				MarkAssetDirty();
-			}
-		}
-
-		public static PaystationTheme PaystationTheme {
-			get => Instance.paystationTheme;
-			set {
-				Instance.paystationTheme = value;
-				MarkAssetDirty();
-			}
-		}
-
-		public static string PayStationTokenRequestUrl
-		{
-			get => Instance.payStationTokenRequestUrl;
-			set
-			{
-				Instance.payStationTokenRequestUrl = value;
 				MarkAssetDirty();
 			}
 		}

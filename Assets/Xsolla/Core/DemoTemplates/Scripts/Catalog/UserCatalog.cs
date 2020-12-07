@@ -9,10 +9,6 @@ using Xsolla.Core;
 public class UserCatalog : MonoSingleton<UserCatalog>
 {
 	public event Action<List<VirtualCurrencyModel>> UpdateVirtualCurrenciesEvent;
-	public event Action<List<CatalogVirtualItemModel>> UpdateItemsEvent;
-	public event Action<List<CatalogVirtualCurrencyModel>> UpdateVirtualCurrencyPackagesEvent;
-	public event Action<List<CatalogBundleItemModel>> UpdateBundlesEvent;
-	public event Action<List<CatalogSubscriptionItemModel>> UpdateSubscriptionsEvent;
 
 	private IDemoImplementation _demoImplementation;
 
@@ -96,45 +92,5 @@ public class UserCatalog : MonoSingleton<UserCatalog>
 			busy = false;
 		}, onError);
 		yield return new WaitWhile(() => busy);
-	}
-	
-	private IEnumerator UpdateVirtualItemsCoroutine(Action<Error> onError = null)
-	{
-		yield return StartCoroutine(UpdateSomeItemsCoroutine<CatalogVirtualItemModel>(
-			_demoImplementation.GetCatalogVirtualItems, items =>
-			{
-				VirtualItems = items;
-				UpdateItemsEvent?.Invoke(items);
-			}, onError));
-	}
-
-	private IEnumerator UpdateVirtualCurrencyPackagesCoroutine(Action<Error> onError = null)
-	{
-		yield return StartCoroutine(UpdateSomeItemsCoroutine<CatalogVirtualCurrencyModel>(
-		_demoImplementation.GetCatalogVirtualCurrencyPackages, items =>
-		{
-			CurrencyPackages = items;
-			UpdateVirtualCurrencyPackagesEvent?.Invoke(items);
-		}, onError));
-	}
-	
-	private IEnumerator UpdateBundlesCoroutine(Action<Error> onError = null)
-	{
-		yield return StartCoroutine(UpdateSomeItemsCoroutine<CatalogBundleItemModel>(
-			_demoImplementation.GetCatalogBundles, items =>
-			{
-				Bundles = items;
-				UpdateBundlesEvent?.Invoke(items);
-			}, onError));
-	}
-	
-	private IEnumerator UpdateSubscriptionsCoroutine(Action<Error> onError = null)
-	{
-		yield return StartCoroutine(UpdateSomeItemsCoroutine<CatalogSubscriptionItemModel>(
-		_demoImplementation.GetCatalogSubscriptions, items =>
-		{
-			Subscriptions = items;
-			UpdateSubscriptionsEvent?.Invoke(items);
-		}, onError));
 	}
 }

@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-using Xsolla.Store;
+using Xsolla.Inventory;
 
 public abstract class BaseUserStateUI : MonoBehaviour
 {

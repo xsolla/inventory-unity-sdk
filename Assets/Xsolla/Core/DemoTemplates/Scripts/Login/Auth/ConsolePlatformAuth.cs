@@ -2,7 +2,7 @@
 using UnityEngine;
 using Xsolla.Core;
 using Xsolla.Login;
-using Xsolla.Store;
+using Xsolla.Inventory;
 
 public class ConsolePlatformAuth : StoreStringActionResult, ILoginAuthorization
 {

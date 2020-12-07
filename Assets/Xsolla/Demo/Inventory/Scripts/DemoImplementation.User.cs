@@ -6,7 +6,7 @@ using JetBrains.Annotations;
 using UnityEngine;
 using Xsolla.Core;
 using Xsolla.Login;
-using Xsolla.Store;
+using Xsolla.Inventory;
 
 public partial class DemoImplementation : MonoBehaviour, IDemoImplementation
 {
@@ -18,7 +18,7 @@ public partial class DemoImplementation : MonoBehaviour, IDemoImplementation
 		set
 		{
 			XsollaLogin.Instance.Token = value;
-			XsollaStore.Instance.Token = value;
+			XsollaInventory.Instance.Token = value;
 		}
 	}
 	public void SaveToken(string key, string token) => XsollaLogin.Instance.SaveToken(key, token);

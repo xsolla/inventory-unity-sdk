@@ -4,41 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Xsolla.Core;
-using Xsolla.Store;
+using Xsolla.Inventory;
 
 public partial class DemoImplementation : MonoBehaviour, IDemoImplementation
 {
-	private const uint CATALOG_CACHE_TIMEOUT = 500;
-
-	private readonly Dictionary<string, List<string>> _itemsGroups = new Dictionary<string, List<string>>();
-
-	private List<StoreItem> _itemsCache;
-	private DateTime _itemsCacheTime = DateTime.Now;
-	private bool _refreshItemsInProgress;
-
-	private List<CatalogBundleItemModel> _bundlesCache;
-	private DateTime _bundlesCacheTime = DateTime.Now;
-	private bool _refreshBundlesInProgress;
-
-	public void GetVirtualCurrencies(Action<List<VirtualCurrencyModel>> onSuccess, Action<Error> onError = null)
-	{
-		XsollaStore.Instance.GetVirtualCurrencyList(XsollaSettings.StoreProjectId, items =>
-		{
-			var currencies = items.items.ToList();
-			if (currencies.Any())
-			{
-				var result = currencies.Select(c =>
-				{
-					var model = new VirtualCurrencyModel();
-					FillItemModel(model, c);
-					return model;
-				}).ToList();
-				onSuccess?.Invoke(result);
-			}
-			else onSuccess?.Invoke(new List<VirtualCurrencyModel>());
-		}, WrapErrorCallback(onError));
-	}
-
 	public void GetCatalogVirtualItems(Action<List<CatalogVirtualItemModel>> onSuccess, Action<Error> onError = null)
 	{
 		onSuccess?.Invoke(new List<CatalogVirtualItemModel>());

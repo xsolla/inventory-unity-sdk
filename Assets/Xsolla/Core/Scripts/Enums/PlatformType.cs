@@ -1,6 +1,6 @@
 ﻿using Xsolla.Core;
 
-namespace Xsolla.Store
+namespace Xsolla.Inventory
 {
     public enum PlatformType
     {

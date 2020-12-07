@@ -46,7 +46,7 @@ public class ItemsController : MonoBehaviour
 		Dictionary<string, GameObject> itemContainers = GetDefaultItemContainers();
 		Dictionary<string, GameObject> otherContainers = new Dictionary<string, GameObject>()
 		{
-			{StoreConstants.INVENTORY_CONTAINER_NAME, inventoryContainerPrefab}
+			{InventoryConstants.INVENTORY_CONTAINER_NAME, inventoryContainerPrefab}
 		};
 		itemContainers.ToList().ForEach((container) => { otherContainers.Add(container.Key, container.Value); });
 		return otherContainers;
@@ -56,7 +56,7 @@ public class ItemsController : MonoBehaviour
 	{
 		return new Dictionary<string, GameObject>()
 		{
-			{StoreConstants.EMPTY_CONTAINER_NAME, itemsContainerPrefab}
+			{InventoryConstants.EMPTY_CONTAINER_NAME, itemsContainerPrefab}
 		};
 	}
 
@@ -73,7 +73,7 @@ public class ItemsController : MonoBehaviour
 	public void ActivateContainer(string groupId)
 	{
 		GameObject activeContainer = InternalActivateContainer(
-			_containers.ContainsKey(groupId) ? groupId : StoreConstants.EMPTY_CONTAINER_NAME
+			_containers.ContainsKey(groupId) ? groupId : InventoryConstants.EMPTY_CONTAINER_NAME
 		);
 		activeContainer.GetComponent<IContainer>().Refresh();
 		CheckForEmptyCatalogMessage(activeContainer);

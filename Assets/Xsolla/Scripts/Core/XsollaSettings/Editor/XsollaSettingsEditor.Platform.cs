@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 using Xsolla.Login;
-using Xsolla.Store;
+using Xsolla.Inventory;
 
 namespace Xsolla.Core
 {

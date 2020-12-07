@@ -33,7 +33,7 @@ public class MenuButton : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
 
 	public Action<string> onClick;
 	private DateTime lastClick;
-	private float rateLimitMs = StoreConstants.DEFAULT_BUTTON_RATE_LIMIT_MS;
+	private float rateLimitMs = InventoryConstants.DEFAULT_BUTTON_RATE_LIMIT_MS;
 
 	string _buttonId = "";
 

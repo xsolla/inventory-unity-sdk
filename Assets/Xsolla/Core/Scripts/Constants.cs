@@ -3,7 +3,7 @@
 	public static partial class Constants
 	{
 		public const string LoginSdkVersion = "0.6.2.0";
-		public const string StoreSdkVersion = "0.6.2.0";
+		public const string InventorySdkVersion = "0.1.0.0";
 
 		public const string DEFAULT_PROJECT_ID = "77640";
 		public const string DEFAULT_LOGIN_ID = "026201e3-7e40-11ea-a85b-42010aa80004";

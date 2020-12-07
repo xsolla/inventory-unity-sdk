@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Xsolla.Core;
 using Xsolla.Core.Popup;
-using Xsolla.Store;
+using Xsolla.Inventory;
 
 public class DemoController : MonoSingleton<DemoController>, IMenuStateMachine
 {

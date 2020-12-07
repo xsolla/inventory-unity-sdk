@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-using Xsolla.Store;
+using Xsolla.Inventory;
 
 public class SubscriptionItemContainer : MonoBehaviour, IContainer
 {
