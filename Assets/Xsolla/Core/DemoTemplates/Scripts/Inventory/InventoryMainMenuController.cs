@@ -12,7 +12,17 @@ public class InventoryMainMenuController : BaseMenuController
 	private void Start()
 	{
 		AttachButtonCallback(inventoryButton,
-			() => SetMenuState(MenuState.Inventory, () => UserInventory.Instance.IsUpdated));
+			() =>
+			{
+				if (UserInventory.Instance.IsUpdated)
+				{
+					UserInventory.Instance.Refresh(() => SetMenuState(MenuState.Inventory));
+				}
+				else
+				{
+					SetMenuState(MenuState.Inventory, () => UserInventory.Instance.IsUpdated);
+				}
+			});
 		AttachButtonCallback(logoutButton,
 			() => SetMenuState(MenuState.Authorization));
 
