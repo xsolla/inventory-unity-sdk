@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Xsolla.Core.Popup;
 
 public class InventoryMainMenuController : BaseMenuController
 {
@@ -17,6 +18,7 @@ public class InventoryMainMenuController : BaseMenuController
 				if (UserInventory.Instance.IsUpdated)
 				{
 					UserInventory.Instance.Refresh(() => SetMenuState(MenuState.Inventory));
+					PopupFactory.Instance.CreateWaiting().SetCloseCondition(() => UserInventory.Instance.IsUpdated);
 				}
 				else
 				{
