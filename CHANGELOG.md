@@ -1,4 +1,8 @@
 # Changelog
+## [0.6.3.4] - 2021-03-05
+### Changed
+- Minor update
+
 ## [0.6.3.3] - 2021-03-05
 ### Changed
 - Added WeChat Android auth
