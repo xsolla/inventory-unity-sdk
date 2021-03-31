@@ -1,5 +1,19 @@
 # Changelog
-## [0.6.3.4] - 2021-03-05
+## [0.6.4.0] - 2021-03-31
+### Added
+- Battle Pass
+- UI Builder
+- XboxOne/PS4 support
+- Redirect policy settings
+- Logging level settings
+- API method for resend account confirmation email
+### Fixed
+ - Payment status polling
+ - AppleID authorization
+### Changed
+- PayStation Widget version
+
+## [0.6.3.4] - 2021-03-18
 ### Changed
 - Minor update
 
@@ -26,6 +40,7 @@
 - More social networks support
 - Hashtag for user identification
 - Browser background
+- Two more gender options
 - Custom parameters for access token auth
 - Support for new Unity input system
 
@@ -35,9 +50,12 @@
 ### Fixed
 - Various bug fixes and improvements
 
-## [1.0.0.0] - 2020-12-14 
+## [1.0.0.1] - 2020-10-27 
+
+### Fixed
+- Minor bugs.
+
+## [1.0.0.0] - 2020-10-08 
 
 ### Added 
-- Authorization functionality.
-- In-game inventory functionality.
-- Coupon functionality.
+- Friends system functionality.
