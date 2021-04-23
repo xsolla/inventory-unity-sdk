@@ -1,4 +1,4 @@
-package com.XsollaInc.XsollaInventoryUnityAsset.wxapi;
+package com.XsollaInc.XsollaInGameStoreUnityAsset.wxapi;
 
 import android.app.Activity;
 import android.os.Bundle;
