@@ -1,4 +1,12 @@
 # Changelog
+## [0.7.0] - 2021-09-17
+### Fixed
+- Various fixes and improvements
+### Changed
+- Refactoring and SDK Architecture improvements
+- Update API methods comments
+- Move newtonsoft to packages
+
 ## [0.6.4.5] - 2021-07-16
 ### Fixed
 - WebGL build
